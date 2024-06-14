@@ -57,6 +57,10 @@
     <script src="{{ asset('js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
+    <script src="{{ asset('library/izitoast/dist/js/iziToast.min.js') }}"></script>
+    <script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
+
+    <!-- JS Libraies -->
     @stack('scripts')
 
 
@@ -65,6 +69,49 @@
     <script src="{{ asset('js/custom.js') }}"></script>
 
     <!-- Page Specific JS File -->
+
+    {{-- success store data --}}
+    @if (session('message') == 'store')
+        <script>
+            iziToast.success({
+                title: 'Sukses',
+                message: 'Berhasil tambah data',
+                position: 'topRight'
+            });
+        </script>
+    @endif
+
+    {{-- success update data --}}
+    @if (session('message') == 'update')
+        <script>
+            iziToast.success({
+                title: 'Sukses',
+                message: 'Berhasil update data',
+                position: 'topRight'
+            });
+        </script>
+    @endif
+
+    {{-- success login --}}
+    @if (session('message') == 'sukses login')
+        <script>
+            swal("Berhasil", "Berhasil Login", "success");
+        </script>
+    @endif
+
+    {{-- failed login --}}
+    @if (session('message') == 'gagal login')
+        <script>
+            swal("Warning", "Periksa kembali username dan password anda", "error");
+        </script>
+    @endif
+
+    {{--  login dulu --}}
+    @if (session('message') == 'need login')
+        <script>
+            swal("Warning", "Anda harus login terlebih dahulu", "error");
+        </script>
+    @endif
 </body>
 
 </html>

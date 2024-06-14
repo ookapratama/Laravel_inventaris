@@ -10,7 +10,7 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="nav-item dropdown {{ $menu == 'dashboard' ? 'active' : '' }}">
-                    <a href="{{route('dashboard.general')}}" class="nav-link "><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                    <a href="{{route('dashboard')}}" class="nav-link "><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
 
             <li class="menu-header">Activity Inventory</li>
@@ -30,7 +30,7 @@
         </ul>
 
         <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-danger btn-lg btn-block btn-icon-split">
+            <a href="{{ route('logout') }}" class="btn btn-danger btn-lg btn-block btn-icon-split">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </div>
