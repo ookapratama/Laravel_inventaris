@@ -6,6 +6,7 @@
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="/">St</a>
         </div>
+
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="nav-item dropdown {{ $menu == 'dashboard' ? 'active' : '' }}">
@@ -25,10 +26,10 @@
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('layout/default') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('layout.default') }}">Default Layout</a></li>
-                    <li class="{{ Request::is('layout/transparent') ? 'active' : '' }}"><a class="nav-link"
+                    {{-- <li class="{{ Request::is('layout/transparent') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('layout.transparent') }}">Transparent Sidebar</a></li>
                     <li class="{{ Request::is('layout/top-navigation') ? 'active' : '' }}"><a class="nav-link"
-                            href="{{ route('layout.top-navigation') }}">Top Navigation</a></li>
+                            href="{{ route('layout.top-navigation') }}">Top Navigation</a></li> --}}
                 </ul>
             </li>
             <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i
