@@ -15,16 +15,25 @@
 
             <li class="menu-header">Activity Inventory</li>
             
-            <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i class="fas fa-boxes"></i><span>Barang</span></a>
+            <li class="{{ $menu == 'barang' ? 'active' : '' }}"><a class="nav-link" href="{{ route('barang.index') }}"><i class="fas fa-boxes"></i><span>Barang</span></a>
             </li>
 
-            <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i class="fas fa-truck-loading"></i> <span>Barang Masuk</span></a>
+            <li class="{{ $menu == 'pemasukan' ? 'active' : '' }}"><a class="nav-link" href="{{ route('masuk.index') }}"><i class="fas fa-truck-loading"></i> <span>Barang Masuk</span></a>
             </li>
 
             <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i class="fas fa-outdent"></i> <span>Barang Keluar</span></a>
             </li>
 
             <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i class="fas fa-history"></i> <span>Riwayat Transaksi</span></a>
+            </li>
+           
+        </ul>
+
+        <ul class="sidebar-menu">
+
+            <li class="menu-header">Out Activity</li>
+            
+            <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i class="fas fa-list"></i><span>Kategori</span></a>
             </li>
            
         </ul>

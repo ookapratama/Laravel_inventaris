@@ -1,11 +1,10 @@
-@extends('layouts.app', ['title' => 'Invantaris Dashboard'])
+@extends('layouts.app', ['title' => 'Inventaris Dashboard'])
 
 @section('content')
     @push('styles')
         <link rel="stylesheet" href="{{ asset('library/jqvmap/dist/jqvmap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('library/weathericons/css/weather-icons.min.css') }}">
         <link rel="stylesheet" href="{{ asset('library/weathericons/css/weather-icons-wind.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('library/summernote/dist/summernote-bs4.css') }}">
     @endpush
 
     <div class="main-content">
@@ -677,7 +676,6 @@
         <script src="{{ asset('library/chart.js/dist/Chart.min.js')}}"></script>
         <script src="{{ asset('library/jqvmap/dist/jquery.vmap.min.js')}}"></script>
         <script src="{{ asset('library/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
-        <script src="{{ asset('library/summernote/dist/summernote-bs4.js')}}"></script>
         <script src="{{ asset('library/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
 
         <!-- Page Specific JS File -->
