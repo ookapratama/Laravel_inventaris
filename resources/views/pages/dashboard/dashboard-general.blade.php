@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'General Dashboard'])
+@extends('layouts.app', ['title' => 'Invantaris Dashboard'])
 
 @section('content')
     @push('styles')
