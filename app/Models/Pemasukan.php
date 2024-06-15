@@ -23,4 +23,14 @@ class Pemasukan extends Model
     public function barang() {
         return $this->hasOne(Barang::class, 'kode', 'kode');
     }
+
+    public function getTransaksiTanggalAttribute()
+    {
+        return $this->tgl_terima;
+    }
+
+    public function getEntitasAttribute()
+    {
+        return 'Nama Pemasok: ' . $this->nama_pemasok;
+    }
 }

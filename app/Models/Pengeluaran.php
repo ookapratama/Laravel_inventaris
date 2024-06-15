@@ -23,4 +23,14 @@ class Pengeluaran extends Model
     public function barang() {
         return $this->hasOne(Barang::class, 'kode', 'kode');
     }
+
+    public function getTransaksiTanggalAttribute()
+    {
+        return $this->tgl_keluar;
+    }
+
+    public function getEntitasAttribute()
+    {
+        return 'Nama Penerima: ' . $this->nama_penerima;
+    }
 }

@@ -61,6 +61,11 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::delete('/destroy/{id}', 'PengeluaranController@destroy')->name('keluar.destroy');
         });
 
+        Route::prefix('transaksi')->group(function () {
+            Route::get('/', 'TransaksiController@index')->name('transaksi.index');
+            Route::get('/show/{id}', 'TransaksiController@show')->name('transaksi.show');
+        });
+
 
 
         // Blank

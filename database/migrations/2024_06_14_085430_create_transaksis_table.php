@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
-            $table->enum('jenis_transaksi', ['masuk', 'keluar']);
+            $table->string('kode_transaksi');
             $table->bigInteger('jumlah');
             $table->date('tgl_transaksi');
             $table->string('entitas'); // nama pemasok atau penerima
-            $table->string('catatan');
+            $table->string('catatan')->nullable();
             $table->timestamps();
         });
     }
