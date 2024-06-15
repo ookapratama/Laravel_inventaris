@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode');
             $table->string('kode_masuk');
-            $table->integer('jumlah');
+            $table->integer('jumlah')->unsigned();
             $table->text('spesifikasi');
             $table->string('lokasi');
             $table->string('satuan');

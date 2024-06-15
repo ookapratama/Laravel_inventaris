@@ -23,7 +23,7 @@ class PemasukanController extends Controller
         //     } 
         // }
         // dd(true);
-        
+
 
         // $barang = Barang::get();
         // foreach($barang as $i => $item) {
@@ -49,29 +49,27 @@ class PemasukanController extends Controller
     {
         // dd($request->all());
 
-        foreach ($request->kode as $key => $value) {
 
-            $id = Pemasukan::max('id') + 1;
-            $kodeMasuk = 'BRG-M-' . str_pad($id, 4, '0', STR_PAD_LEFT);
+        $id = Pemasukan::max('id') + 1;
+        $kodeMasuk = 'BRG-M-' . str_pad($id, 4, '0', STR_PAD_LEFT);
 
-            $barangMasuk = new Pemasukan();
+        $barangMasuk = new Pemasukan();
 
-            // tambah barang pemasukan
-            $barangMasuk->kode_masuk = $kodeMasuk;
-            $barangMasuk->kode = $request->kode[$key];
-            // $barangMasuk->nama = $request->nama[$key];
-            // $barangMasuk->kategori = $request->kategori[$key];
-            $barangMasuk->jumlah = $request->jumlah[$key];
-            $barangMasuk->satuan = $request->satuan[$key];
-            $barangMasuk->lokasi = $request->lokasi[$key];
-            $barangMasuk->tgl_terima = $request->tgl_terima[$key];
-            $barangMasuk->nama_pemasok = $request->nama_pemasok[$key];
-            $barangMasuk->spesifikasi = $request->spesifikasi[$key];
-            // dd($barangMasuk);
-            $barangMasuk->save();
-        }
+        // tambah barang pemasukan
+        $barangMasuk->kode_masuk = $kodeMasuk;
+        $barangMasuk->kode = $request->kode;
+        // $barangMasuk->nama = $request->nama;
+        // $barangMasuk->kategori = $request->kategori;
+        $barangMasuk->jumlah = $request->jumlah;
+        $barangMasuk->satuan = $request->satuan;
+        $barangMasuk->lokasi = $request->lokasi;
+        $barangMasuk->tgl_terima = $request->tgl_terima;
+        $barangMasuk->nama_pemasok = $request->nama_pemasok;
+        $barangMasuk->spesifikasi = $request->spesifikasi;
+        // dd($barangMasuk);
+        $barangMasuk->save();
         // dd($request->all());
-        return redirect()->route('masuk.index')->with('message','store');
+        return redirect()->route('masuk.index')->with('message', 'store');
     }
 
     /**

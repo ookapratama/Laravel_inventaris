@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('pengeluarans', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
-            $table->integer('jumlah');
+            $table->string('kode_keluar');
+            $table->integer('jumlah')->unsigned();
             $table->text('spesifikasi');
             $table->enum('satuan', ['pcs', 'dos']);
             $table->string('department');

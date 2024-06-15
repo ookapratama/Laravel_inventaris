@@ -99,6 +99,13 @@
         </script>
     @endif
 
+    {{-- validasi barang keluar --}}
+    @if (session('message') == 'stok error')
+        <script>
+            swal("Warning", "Jumlah yang anda masukkan tidak valid dengan Stok barang", "error");
+        </script>
+    @endif
+
     {{-- failed login --}}
     @if (session('message') == 'gagal login')
         <script>

@@ -21,10 +21,10 @@
             <li class="{{ $menu == 'pemasukan' ? 'active' : '' }}"><a class="nav-link" href="{{ route('masuk.index') }}"><i class="fas fa-truck-loading"></i> <span>Barang Masuk</span></a>
             </li>
 
-            <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i class="fas fa-outdent"></i> <span>Barang Keluar</span></a>
+            <li class="{{ $menu == 'keluar' ? 'active' : ''}}"><a class="nav-link" href="{{ route('keluar.index') }}"><i class="fas fa-outdent"></i> <span>Barang Keluar</span></a>
             </li>
 
-            <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i class="fas fa-history"></i> <span>Riwayat Transaksi</span></a>
+            <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i class="fas fa-history"></i> <span>Transaksi Barang</span></a>
             </li>
            
         </ul>

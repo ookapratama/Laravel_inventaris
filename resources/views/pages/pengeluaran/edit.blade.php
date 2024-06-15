@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Tambah Barang Masuk'])
+@extends('layouts.app', ['title' => 'Edit Barang Keluar'])
 @section('content')
     @push('styles')
         <!-- Summernote CSS -->
@@ -27,69 +27,66 @@
                                 <button id="kurangItem" class="btn p-2 px-3 btn-danger"><i class="fas fa-minus"></i> Kurangi item</button> --}}
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('masuk.store') }}" method="post">
+                                <form action="{{ route('keluar.update') }}" method="post">
                                     @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="id" class="id" value="{{ $data->id }}">
                                     <div class="barang" id="barang1">
                                         <h2>Barang</h2>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Kode Barang</label>
-                                                    <select name="kode" id="kode1" required class="form-control kode-barang select2">
-                                                        <option value="">-- Pilih Kode Barang --</option>
-                                                        @foreach ($barang as $item)
-                                                            <option value="{{ $item->kode }}" data-nama="{{ $item->nama }}" data-kategori="{{ $item->kategori->nama }}" data-satuan="{{ $item->satuan }}">{{ $item->kode }} - {{ $item->nama }}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <input type="text" readonly name="kode" id="kode1" required value="{{ $data->kode }}" class="form-control kode-barang ">
                                                 </div>
                                             </div>
 
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Nama Barang</label>
-                                                    <input required readonly required type="text" id="nama1" name="nama" class="form-control nama-barang">
+                                                    <input required readonly required type="text" id="nama1" name="nama" class="form-control nama-barang" value="{{ $data->barang->nama }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Kategori Barang</label>
-                                                    <input required type="text" readonly name="kategori" id="kategori1" class="form-control kategori-barang">
+                                                    <input readonly required value="{{ $data->barang->kategori->nama }}" type="text" readonly name="kategori" id="kategori1" class="form-control kategori-barang">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label>Jumlah Barang Masuk</label>
-                                                    <input required type="text" name="jumlah" id="jumlah1" class="form-control jumlah-barang">
+                                                    <label>Jumlah Barang Keluar</label>
+                                                    <input required value="{{ $data->jumlah }}" type="text" name="jumlah" id="jumlah1" class="form-control jumlah-barang">
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Satuan Barang</label>
-                                                <input required readonly name="satuan" type="text" id="satuan1" class="form-control satuan-barang" />
+                                                <input required readonly value="{{ $data->satuan }}" name="satuan" type="text" id="satuan1" class="form-control satuan-barang" />
                                             </div>
                                             <div class="col-md-3">
-                                                <label>Lokasi Barang Masuk</label>
-                                                <input required type="text" name="lokasi" id="lokasi1" class="form-control lokasi-barang">
+                                                <label>Departemen</label>
+                                                <input required type="text" value="{{ $data->department }}" name="department" id="department" class="form-control department-barang">
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="form-group">
-                                                    <label>Tanggal Terima</label>
-                                                    <input required type="date" name="tgl_terima" id="tgl_terima1" class="form-control tgl-terima">
+                                                    <label>Tanggal Keluar</label>
+                                                    <input required type="date" value="{{ $data->tgl_keluar }}" name="tgl_keluar" id="tgl_keluar1" class="form-control tgl-keluar">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Nama Pemasok</label>
-                                                    <input type="text" required name="nama_pemasok" id="nama_pemasok1" class="form-control nama-pemasok">
+                                                    <label>Nama Penerima</label>
+                                                    <input type="text" required value="{{ $data->nama_penerima }}" name="nama_penerima" id="nama_penerima1" class="form-control nama-penerima">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Spesifikasi</label>
-                                                    <textarea required name="spesifikasi" id="spesifikasi1" class="summernote-simple spesifikasi-barang"></textarea>
+                                                    <textarea required name="spesifikasi" id="spesifikasi1" class="summernote-simple spesifikasi-barang">{!! $data->spesifikasi !!}</textarea>
                                                 </div>
                                             </div>
                                         </div>

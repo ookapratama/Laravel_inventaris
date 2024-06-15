@@ -52,6 +52,15 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::delete('/destroy/{id}', 'PemasukanController@destroy')->name('masuk.destroy');
         });
 
+        Route::prefix('keluar')->group(function () {
+            Route::get('/', 'PengeluaranController@index')->name('keluar.index');
+            Route::get('/create', 'PengeluaranController@create')->name('keluar.create');
+            Route::post('/store', 'PengeluaranController@store')->name('keluar.store');
+            Route::get('/edit/{id}', 'PengeluaranController@edit')->name('keluar.edit');
+            Route::put('/update', 'PengeluaranController@update')->name('keluar.update');
+            Route::delete('/destroy/{id}', 'PengeluaranController@destroy')->name('keluar.destroy');
+        });
+
 
 
         // Blank
