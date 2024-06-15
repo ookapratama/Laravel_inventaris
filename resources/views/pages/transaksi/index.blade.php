@@ -39,7 +39,7 @@
                                                 <th>Lokasi</th>
                                                 <th>Kategori</th>
                                                 <th>Spesifikasi</th>
-                                                {{-- <th>Action</th> --}}
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,8 +59,8 @@
                                                     <td>{{ $item->barang->kategori->nama }}</td>
                                                     <td>{!! $item->spesifikasi !!}</td>
                                                     <td>
-                                                        {{-- <a href="{{ route('transaksi.show', $item->id) }}"
-                                                            class="btn btn-primary">Detail</a> --}}
+                                                        <a href="{{ route('transaksi.show', $item->id) }}"
+                                                            class="btn btn-primary">Detail</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
