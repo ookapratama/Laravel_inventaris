@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Tambah Barang Masuk'])
+@extends('layouts.app', ['title' => 'Edit Barang Masuk'])
 @section('content')
     @push('styles')
         <!-- Summernote CSS -->
@@ -23,37 +23,34 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                {{-- <button id="tambahItem" class="btn p-2 px-3 mr-4 btn-primary"><i class="fas fa-plus"></i> Tambah item</button>
-                                <button id="kurangItem" class="btn p-2 px-3 btn-danger"><i class="fas fa-minus"></i> Kurangi item</button> --}}
+                                
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('masuk.store') }}" method="post">
+                                <form action="{{ route('masuk.update') }}" method="post">
                                     @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="id" value="{{ $data->id }}">
                                     <div class="barang" id="barang1">
                                         <h2>Barang</h2>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label>Kode Barang</label>
-                                                    <select name="kode[]" id="kode1" required class="form-control kode-barang select2">
-                                                        <option value="">-- Pilih Kode Barang --</option>
-                                                        @foreach ($barang as $item)
-                                                            <option value="{{ $item->kode }}" data-nama="{{ $item->nama }}" data-kategori="{{ $item->kategori->nama }}" data-satuan="{{ $item->satuan }}">{{ $item->kode }}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <input type="text" readonly name="kode" id="kode1" required value="{{ $data->kode }}" class="form-control kode-barang ">
+                                                    
                                                 </div>
                                             </div>
 
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Nama Barang</label>
-                                                    <input required readonly required type="text" id="nama1" name="nama[]" class="form-control nama-barang">
+                                                    <input required readonly required type="text" id="nama1" name="nama" class="form-control nama-barang" value="{{ $data->barang->nama }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Kategori Barang</label>
-                                                    <input required type="text" readonly name="kategori[]" id="kategori1" class="form-control kategori-barang">
+                                                    <input required type="text" readonly name="kategori" id="kategori1" class="form-control kategori-barang" value="{{ $data->barang->kategori->nama }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -61,21 +58,21 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label>Jumlah Barang Masuk</label>
-                                                    <input required type="text" name="jumlah[]" id="jumlah1" class="form-control jumlah-barang">
+                                                    <input required type="text" name="jumlah" id="jumlah1" class="form-control jumlah-barang" value="{{ $data->jumlah }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <label>Satuan Barang</label>
-                                                <input required readonly name="satuan[]" type="text" id="satuan1" class="form-control satuan-barang" />
+                                                <input required readonly name="satuan" type="text" id="satuan1" class="form-control satuan-barang" value="{{ $data->satuan }}" />
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Lokasi Barang Masuk</label>
-                                                <input required type="text" name="lokasi[]" id="lokasi1" class="form-control lokasi-barang">
+                                                <input required type="text" name="lokasi" id="lokasi1" class="form-control lokasi-barang" value="{{ $data->lokasi }}">
                                             </div>
                                             <div class="col-md-5">
                                                 <div class="form-group">
                                                     <label>Tanggal Terima</label>
-                                                    <input required type="date" name="tgl_terima[]" id="tgl_terima1" class="form-control tgl-terima">
+                                                    <input required type="date" name="tgl_terima" id="tgl_terima1" class="form-control tgl-terima" value="{{ $data->tgl_terima }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -83,13 +80,15 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Nama Pemasok</label>
-                                                    <input type="text" required name="nama_pemasok[]" id="nama_pemasok1" class="form-control nama-pemasok">
+                                                    <input type="text" required name="nama_pemasok" id="nama_pemasok1" class="form-control nama-pemasok" value="{{ $data->nama_pemasok }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Spesifikasi</label>
-                                                    <textarea required name="spesifikasi[]" id="spesifikasi1" class="summernote-simple spesifikasi-barang"></textarea>
+                                                    <textarea required name="spesifikasi" id="spesifikasi1" class="summernote-simple spesifikasi-barang">
+                                                      {!! $data->spesifikasi !!}
+                                                    </textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,8 +96,9 @@
                                     </div>
                                     <div id="barangClone"></div>
                                     <div class="card-footer text-right">
-                                        <a href="{{ route('masuk.index') }}" class="btn btn-warning" >Kembali</a>
+                                      <a href="{{ route('masuk.index') }}" class="btn btn-warning" >Kembali</a>
                                         <button class="btn btn-primary mr-1" type="submit">Submit</button>
+
                                     </div>
                                 </form>
                             </div>

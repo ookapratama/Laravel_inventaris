@@ -7,7 +7,7 @@
 
 "use strict";
 
-// swal btn hapus
+// swal btn set status barang
 const setStatus = (id, tabel, status) => {
     console.log(id, tabel, status);
     let token = $("meta[name='csrf-token']").attr("content");
@@ -50,3 +50,51 @@ const setStatus = (id, tabel, status) => {
         }
     });
 };
+
+// modal detail barang
+// $("#detail-barang").fireModal({title: 'Detail Barang',body: 'Modal body text goes here.', center: true});
+const detailBarang = (id) => {
+    console.log(id);
+    fireModal({title: 'Detail Barang',body: 'Modal body text goes here.', center: true});
+};
+
+// swal btn hps data
+const deleteData = (id, tabel) => {
+    console.log(id);
+    let token = $("meta[name='csrf-token']").attr("content");
+
+    swal({
+        title: "Apakah anda yakin?",
+        text: "",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                headers: {
+                    "X-CSRF-TOKEN": token,
+                },
+                type: "DELETE",
+                url: `/dashboard/${tabel}/destroy/${id}`,
+                success: function (response) {
+                    console.log(response);
+                    if (response) {
+                        swal("Terhapus", "Data telah dihapus", "success").then(
+                            () => {
+                                location.reload();
+                            }
+                        );
+                    } else {
+                        swal("Error", "Failed to delete data.", "error");
+                    }
+                },
+                error: function (error) {
+                    console.error("AJAX Error:", error);
+                    swal("Error", "Ajax Error.", "error");
+                },
+            });
+        }
+    });
+};
+

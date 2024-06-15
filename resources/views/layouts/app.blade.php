@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title }} &mdash; Stisla</title>
+    <title>{{ $title }} &mdash; Stisla {{ session('message') }}</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -71,22 +71,24 @@
     {{-- success store data --}}
     @if (session('message') == 'store')
         <script>
-            iziToast.success({
-                title: 'Sukses',
-                message: 'Berhasil tambah data',
-                position: 'topRight'
-            });
+            // iziToast.success({
+            //     title: 'Sukses',
+            //     message: 'Berhasil tambah data',
+            //     position: 'topRight'
+            // });
+            swal("Berhasil", "Berhasil tambah data", "success");
         </script>
     @endif
 
     {{-- success update data --}}
     @if (session('message') == 'update')
         <script>
-            iziToast.success({
-                title: 'Sukses',
-                message: 'Berhasil update data',
-                position: 'topRight'
-            });
+            // iziToast.success({
+            //     title: 'Sukses',
+            //     message: 'Berhasil update data',
+            //     position: 'topRight'
+            // });
+            swal("Berhasil", "Berhasil ubah data", "success");
         </script>
     @endif
 

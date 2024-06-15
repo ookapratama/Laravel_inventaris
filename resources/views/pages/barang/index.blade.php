@@ -71,15 +71,15 @@
                                                             {{ $item->status }}</div>
                                                     </td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary">Detail</a>
+                                                        {{-- <a href="#" class="btn btn-primary" onclick="detailBarang({{$item->id}})" id="detail-barang">Detail</a> --}}
                                                         <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                                                        @if ($item->status == 'tidak aktif')
+                                                        {{-- @if ($item->status == 'tidak aktif')
                                                             <button onclick="setStatus({{ $item->id }}, 'barang', 'aktif')"
                                                                 class="btn btn-info">Aktifkan barang</button>
                                                         @else
                                                             <button onclick="setStatus({{ $item->id }}, 'barang', 'tidak aktif')"
                                                                 class="btn btn-danger">Nonaktifkan barang</button>
-                                                        @endif
+                                                        @endif --}}
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -100,5 +100,7 @@
         <script src="{{ asset('library/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('library/datatables.net-select-bs4/js/select.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('js/page/modules-datatables.js') }}"></script>
+        <script src="{{ asset('library/prismjs/prism.js') }}"></script>
+        <script src="{{ asset('js/page/bootstrap-modal.js') }}"></script>
     @endpush
 @endsection

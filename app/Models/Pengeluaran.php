@@ -17,6 +17,5 @@ class Pengeluaran extends Model
         'nama_penerima',
         'catatan',
         'tgl_keluar',
-        'kategori_id',
     ];
 }

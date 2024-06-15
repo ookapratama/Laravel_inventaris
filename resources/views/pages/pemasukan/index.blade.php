@@ -18,14 +18,15 @@
             </div>
 
             <div class="section-body">
-               
+
 
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <h4>Barang Masuk </h4>
-                                <a href="{{ route('masuk.create') }}" class="btn btn-success justi my-3 p-2">+ Tambah Barang</a>
+                                <a href="{{ route('masuk.create') }}" class="btn btn-success justi my-3 p-2">+ Tambah
+                                    Barang</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -35,15 +36,15 @@
                                                 <th class="text-center">
                                                     #
                                                 </th>
+                                                <th>Kode Barang Masuk</th>
+                                                <th>Tanggal Terima</th>
                                                 <th>Kode Barang</th>
-                                                <th>Spesifikasi</th>
                                                 <th>Jumlah</th>
                                                 <th>Lokasi Barang</th>
                                                 <th>Nama Pemasok</th>
                                                 <th>Satuan</th>
-                                                <th>Catatan</th>
-                                                <th>Tanggal Terima</th>
                                                 <th>Kategori</th>
+                                                <th>Spesifikasi</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -51,33 +52,40 @@
                                             @foreach ($data as $i => $item)
                                                 <tr>
                                                     <td>
-                                                        1
+                                                        {{ ++$i }}
                                                     </td>
-                                                    <td>Create a mobile app</td>
-                                                    <td class="align-middle">
-                                                        <div class="progress" data-height="4" data-toggle="tooltip"
-                                                            title="100%">
-                                                            <div class="progress-bar bg-success" data-width="100%"></div>
-                                                        </div>
+                                                    <td>{{ $item->kode_masuk }}</td>
+                                                    <td>{{ $item->tgl_terima }}</td>
+                                                    <td>{{ $item->kode }}</td>
+                                                    <td>
+                                                        {{ $item->jumlah }}
                                                     </td>
                                                     <td>
-                                                        <img alt="image" src="{{ asset('img/avatar/avatar-5.png') }}"
-                                                            class="rounded-circle" width="35" data-toggle="tooltip"
-                                                            title="Wildan Ahdian">
-                                                    </td>
-                                                    <td>2018-01-20</td>
-                                                    <td>
-                                                        <div class="badge badge-success">Completed</div>
+                                                        {{ $item->lokasi }}
                                                     </td>
                                                     <td>
-                                                        <div class="badge badge-success">Completed</div>
+                                                        {{ $item->nama_pemasok }}
                                                     </td>
                                                     <td>
-                                                        <div class="badge badge-success">Completed</div>
+                                                        {{ $item->satuan }}
+                                                    </td>
+                                                    
+
+                                                    <td>
+                                                        {{ $item->barang->kategori->nama }}
+                                                    </td>
+                                                    {{-- @foreach ($item->barang as $b)
+                                                        <td>
+                                                            {{ $b->kategori->nama == '' ? '-' : $b->kategori->nama }}
+                                                        </td>
+                                                    @endforeach --}}
+                                                    <td>
+                                                        {!! $item->spesifikasi !!}
                                                     </td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary">Detail</a>
-                                                        <a href="#" class="btn btn-warning">Edit</a>
+                                                        <a href="{{ route('masuk.edit', $item->id) }}" class="btn btn-warning">Edit</a>
+                                                        <button onclick="deleteData({{ $item->id }}, 'masuk')"
+                                                            class="btn btn-danger">Hapus</button>
                                                     </td>
                                                 </tr>
                                             @endforeach

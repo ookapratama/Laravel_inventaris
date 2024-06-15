@@ -10,6 +10,7 @@ class Pemasukan extends Model
     use HasFactory;
     protected $fillable = [
         'kode',
+        'kode_masuk',
         'jumlah',
         'spesifikasi',
         'lokasi',
@@ -17,6 +18,9 @@ class Pemasukan extends Model
         'nama_pemasok',
         'catatan',
         'tgl_terima',
-        'kategori_id',
     ];
+
+    public function barang() {
+        return $this->hasOne(Barang::class, 'kode', 'kode');
+    }
 }

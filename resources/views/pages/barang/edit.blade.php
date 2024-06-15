@@ -49,7 +49,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Jumlah Barang</label>
-                                                <input required name="stok" type="number" value="{{ $data->stok }}" class="form-control">
+                                                <input readonly required name="stok" type="number" value="{{ $data->stok }}" class="form-control">
                                             </div>
 
                                         </div>
@@ -72,8 +72,8 @@
                                     
                                 </div>
                                 <div class="card-footer text-right">
+                                    <a class="btn btn-warning" href="{{ route('barang.index') }}">Kembali</a>
                                     <button class="btn btn-primary mr-1" type="submit">Submit</button>
-                                    <button class="btn btn-secondary" type="reset">Reset</button>
                                 </div>
                             </div>
                         </div>
