@@ -73,7 +73,7 @@
                                     </div>
                                     <div id="barangClone"></div>
                                     <div class="card-footer text-right">
-                                        <a href="{{ route('masuk.index') }}" class="btn btn-warning" >Kembali</a>
+                                        <a href="{{ route('user.index') }}" class="btn btn-warning" >Kembali</a>
                                         <button class="btn btn-primary mr-1" type="submit">Submit</button>
                                     </div>
                                 </form>
