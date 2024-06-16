@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\PengeluaranExport;
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PengeluaranController extends Controller
 {
@@ -103,4 +105,14 @@ class PengeluaranController extends Controller
         $data->delete();
         return response()->json($data);
     }
+
+    public function export(Request $request)
+    {
+
+        $filename = 'Barang_Keluar_Export_' . now()->format('Ymd_His') . '.xlsx';
+        $tes = Pengeluaran::all();
+
+        return Excel::download(new PengeluaranExport(), $filename);
+    }
+
 }

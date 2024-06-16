@@ -6,6 +6,8 @@ use App\Exports\BarangExport;
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Kategori;
+use App\Models\Pemasukan;
+use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -36,6 +38,7 @@ class BarangController extends Controller
     public function index()
     {
         $data = Barang::get();
+
         return view('pages.barang.index', ['menu' => 'barang'], compact('data'));
     }
 

@@ -46,6 +46,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
 
         Route::prefix('masuk')->group(function () {
             Route::get('/', 'PemasukanController@index')->name('masuk.index');
+            Route::post('/export', 'PemasukanController@export')->name('masuk.export.excel');
             Route::get('/create', 'PemasukanController@create')->name('masuk.create');
             Route::post('/store', 'PemasukanController@store')->name('masuk.store');
             Route::get('/edit/{id}', 'PemasukanController@edit')->name('masuk.edit');
@@ -55,6 +56,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
 
         Route::prefix('keluar')->group(function () {
             Route::get('/', 'PengeluaranController@index')->name('keluar.index');
+            Route::post('/export', 'PengeluaranController@export')->name('keluar.export.excel');
             Route::get('/create', 'PengeluaranController@create')->name('keluar.create');
             Route::post('/store', 'PengeluaranController@store')->name('keluar.store');
             Route::get('/edit/{id}', 'PengeluaranController@edit')->name('keluar.edit');
@@ -64,6 +66,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
 
         Route::prefix('transaksi')->group(function () {
             Route::get('/', 'TransaksiController@index')->name('transaksi.index');
+            Route::post('/export', 'TransaksiController@export')->name('transaksi.export.excel');
             Route::get('/show/{id}', 'TransaksiController@show')->name('transaksi.show');
         });
 

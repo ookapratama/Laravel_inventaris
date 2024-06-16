@@ -28,6 +28,14 @@
                                 <a href="{{ route('keluar.create') }}" class="btn btn-success justi my-3 p-2">+ Tambah
                                     Barang</a>
                             </div>
+                            <form action="{{ route('keluar.export.excel') }}" method="POST">
+                                @csrf
+                                <div class="p-3">
+                                    <button class="btn btn-success  p-2" type="submit"><i
+                                            class="fas fa-sticky-note pr-1"></i>
+                                        Download Excel</button>
+                                </div>
+                            </form>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="table-1">

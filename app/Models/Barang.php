@@ -22,4 +22,10 @@ class Barang extends Model
     public function kategori() {
         return $this->hasOne(Kategori::class, 'id', 'kategori_id');
     }
+    public function masuk() {
+        return $this->hasMany(Pemasukan::class, 'kode', 'kode');
+    }
+    public function keluar() {
+        return $this->hasMany(Pengeluaran::class, 'kode', 'kode');
+    }
 }

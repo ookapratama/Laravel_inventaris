@@ -28,6 +28,29 @@
                                 <a href="{{ route('barang.create') }}" class="btn btn-success justi my-3 p-2">+ Tambah
                                     Barang</a>
                             </div>
+                            <div class="card-header d-flex justify-content-between">
+                                <form action="{{ route('barang.export.excel') }}" method="POST">
+                                <div class=" d-flex">
+                                        @csrf
+                                        <div class="btn-group">
+                                            <div class="form-group">
+                                                <label for="">Mulai dari : </label>
+                                                <input class="form-control" type="date" name="mulai" id="">
+                                            </div>
+                                        </div>
+                                        <div class="mx-3">
+                                            <div class="form-group">
+                                                <label for="">Sampai tanggal : </label>
+                                                <input class="form-control" type="date" name="sampai" id="">
+                                            </div>
+                                        </div>
+                                        <div class="">
+                                            <button class="btn btn-success  p-2" type="submit"><i class="fas fa-sticky-note pr-1"></i> Filter & Download
+                                                Excel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="table-1">
