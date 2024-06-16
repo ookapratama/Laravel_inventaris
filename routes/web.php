@@ -51,7 +51,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::post('/store', 'PemasukanController@store')->name('masuk.store');
             Route::get('/edit/{id}', 'PemasukanController@edit')->name('masuk.edit');
             Route::put('/update', 'PemasukanController@update')->name('masuk.update');
-            Route::delete('/destroy/{id}', 'PemasukanController@destroy')->name('masuk.destroy');
+            Route::post('/hapus/{id}', 'PemasukanController@hapus')->name('masuk.hapus');
         });
 
         Route::prefix('keluar')->group(function () {
@@ -61,7 +61,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::post('/store', 'PengeluaranController@store')->name('keluar.store');
             Route::get('/edit/{id}', 'PengeluaranController@edit')->name('keluar.edit');
             Route::put('/update', 'PengeluaranController@update')->name('keluar.update');
-            Route::delete('/destroy/{id}', 'PengeluaranController@destroy')->name('keluar.destroy');
+            Route::post('/hapus/{id}', 'PengeluaranController@hapus')->name('keluar.hapus');
         });
 
         Route::prefix('kategori')->group(function () {
@@ -70,7 +70,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::post('/store', 'KategoriController@store')->name('kategori.store');
             Route::get('/edit/{id}', 'KategoriController@edit')->name('kategori.edit');
             Route::put('/update', 'KategoriController@update')->name('kategori.update');
-            Route::delete('/destroy/{id}', 'KategoriController@destroy')->name('kategori.destroy');
+            Route::post('/hapus/{id}', 'KategoriController@hapus')->name('kategori.hapus');
         });
 
         Route::prefix('user')->group(function () {
@@ -79,7 +79,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::post('/store', 'UserController@store')->name('user.store');
             Route::get('/edit/{id}', 'UserController@edit')->name('user.edit');
             Route::put('/update', 'UserController@update')->name('user.update');
-            Route::delete('/destroy/{id}', 'UserController@destroy')->name('user.destroy');
+            Route::post('/hapus/{id}', 'UserController@hapus')->name('user.hapus');
         });
 
         Route::prefix('transaksi')->group(function () {

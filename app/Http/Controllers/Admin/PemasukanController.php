@@ -108,9 +108,10 @@ class PemasukanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function hapus(string $id)
     {
         $data = Pemasukan::find($id);
+        dump($data);
         $data->delete();
         return response()->json($data);
     }

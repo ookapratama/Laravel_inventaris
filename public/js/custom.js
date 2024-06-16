@@ -60,7 +60,7 @@ const detailBarang = (id) => {
 
 // swal btn hps data
 const deleteData = (id, tabel) => {
-    console.log(id);
+    console.log(id, tabel);
     let token = $("meta[name='csrf-token']").attr("content");
 
     swal({
@@ -75,8 +75,8 @@ const deleteData = (id, tabel) => {
                 headers: {
                     "X-CSRF-TOKEN": token,
                 },
-                type: "DELETE",
-                url: `/dashboard/${tabel}/destroy/${id}`,
+                type: "POST",
+                url: `/public/dashboard/${tabel}/hapus/${id}`,
                 success: function (response) {
                     console.log(response);
                     if (response) {
