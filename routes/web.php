@@ -73,6 +73,15 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::delete('/destroy/{id}', 'KategoriController@destroy')->name('kategori.destroy');
         });
 
+        Route::prefix('user')->group(function () {
+            Route::get('/', 'UserController@index')->name('user.index');
+            Route::get('/create', 'UserController@create')->name('user.create');
+            Route::post('/store', 'UserController@store')->name('user.store');
+            Route::get('/edit/{id}', 'UserController@edit')->name('user.edit');
+            Route::put('/update', 'UserController@update')->name('user.update');
+            Route::delete('/destroy/{id}', 'UserController@destroy')->name('user.destroy');
+        });
+
         Route::prefix('transaksi')->group(function () {
             Route::get('/', 'TransaksiController@index')->name('transaksi.index');
             Route::post('/export', 'TransaksiController@export')->name('transaksi.export.excel');

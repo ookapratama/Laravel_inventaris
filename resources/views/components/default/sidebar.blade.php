@@ -35,6 +35,9 @@
             
             <li class="{{ $menu == 'kategori' ? 'active' : ''}}"><a class="nav-link" href="{{ route('kategori.index') }}"><i class="fas fa-list"></i><span>Kategori</span></a>
             </li>
+            
+            <li class="{{ $menu == 'user' ? 'active' : ''}}"><a class="nav-link" href="{{ route('user.index') }}"><i class="fas fa-users"></i><span>User</span></a>
+            </li>
            
         </ul>
 
