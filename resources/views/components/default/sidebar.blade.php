@@ -33,7 +33,7 @@
 
             <li class="menu-header">Out Activity</li>
             
-            <li class="{{ Request::is('blank') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blank') }}"><i class="fas fa-list"></i><span>Kategori</span></a>
+            <li class="{{ $menu == 'kategori' ? 'active' : ''}}"><a class="nav-link" href="{{ route('kategori.index') }}"><i class="fas fa-list"></i><span>Kategori</span></a>
             </li>
            
         </ul>

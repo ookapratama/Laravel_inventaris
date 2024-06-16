@@ -64,6 +64,15 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::delete('/destroy/{id}', 'PengeluaranController@destroy')->name('keluar.destroy');
         });
 
+        Route::prefix('kategori')->group(function () {
+            Route::get('/', 'KategoriController@index')->name('kategori.index');
+            Route::get('/create', 'KategoriController@create')->name('kategori.create');
+            Route::post('/store', 'KategoriController@store')->name('kategori.store');
+            Route::get('/edit/{id}', 'KategoriController@edit')->name('kategori.edit');
+            Route::put('/update', 'KategoriController@update')->name('kategori.update');
+            Route::delete('/destroy/{id}', 'KategoriController@destroy')->name('kategori.destroy');
+        });
+
         Route::prefix('transaksi')->group(function () {
             Route::get('/', 'TransaksiController@index')->name('transaksi.index');
             Route::post('/export', 'TransaksiController@export')->name('transaksi.export.excel');
