@@ -81,14 +81,29 @@
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-12 col-sm-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header d-flex justify-content-between">
                             <h4>Data Barang</h4>
-                            <div class="card-header-action">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-primary">Week</a>
-                                    <a href="#" class="btn">Month</a>
+                            <form action="{{ route('barang.export.excel') }}" method="POST">
+                            <div class=" d-flex">
+                                    @csrf
+                                    <div class="btn-group">
+                                        <div class="form-group">
+                                            <label for="">Mulai dari : </label>
+                                            <input class="form-control" type="date" name="mulai" id="">
+                                        </div>
+                                    </div>
+                                    <div class="mx-3">
+                                        <div class="form-group">
+                                            <label for="">Sampai tanggal : </label>
+                                            <input class="form-control" type="date" name="sampai" id="">
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <button class="btn btn-success  p-2" type="submit"><i class="fas fa-sticky-note pr-1"></i> Export
+                                            Excel</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -98,6 +113,7 @@
                                             <th class="text-center">
                                                 #
                                             </th>
+                                            <th>Tanggal Barang</th>
                                             <th>Kode Barang</th>
                                             <th>Nama Barang</th>
                                             <th>Spesifikasi</th>
@@ -113,6 +129,7 @@
                                                 <td>
                                                     {{ ++$i }}
                                                 </td>
+                                                <td>{{  $item->created_at->format('m-d-Y') }}</td>
                                                 <td>{{ $item->kode }}</td>
                                                 <td class="align-middle">
                                                     {{ $item->nama }}
@@ -234,9 +251,11 @@
                                                 <td>
                                                     {{ ++$i }}
                                                 </td>
-                                                <td >{{ $item->kode_masuk }} </td>
+                                                <td>{{ $item->kode_masuk }} </td>
                                                 <td>{{ $item->tgl_terima }}</td>
-                                                <td width="100">{{ $item->kode }} <br> <h6>{{ $item->barang->nama }}</h6></td>
+                                                <td width="100">{{ $item->kode }} <br>
+                                                    <h6>{{ $item->barang->nama }}</h6>
+                                                </td>
                                                 <td width="50">
                                                     {{ $item->jumlah }}
                                                 </td>
@@ -249,7 +268,7 @@
                                                 <td width="50">
                                                     {{ $item->satuan }}
                                                 </td>
-                                                
+
 
                                                 <td>
                                                     {{ $item->barang->kategori->nama }}
@@ -263,7 +282,8 @@
                                                     {!! $item->spesifikasi !!}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('masuk.edit', $item->id) }}" class="btn btn-primary">Detail</a>
+                                                    <a href="{{ route('masuk.edit', $item->id) }}"
+                                                        class="btn btn-primary">Detail</a>
                                                     {{-- <a href="{{ route('masuk.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                                                     <button onclick="deleteData({{ $item->id }}, 'masuk')"
                                                         class="btn btn-danger">Hapus</button> --}}
@@ -311,13 +331,13 @@
                                                 <td>{{ $item->tgl_keluar }}</td>
                                                 <td width="100">
                                                     {{ $item->kode }} <br>
-                                                    <h6>{{ $item->barang->nama }}</h6> 
+                                                    <h6>{{ $item->barang->nama }}</h6>
                                                 </td>
                                                 <td>
                                                     {{ $item->jumlah }}
                                                 </td>
                                                 <td>
-                                                    {{ $item->nama_penerima}}
+                                                    {{ $item->nama_penerima }}
                                                 </td>
                                                 <td width="50">
                                                     {{ $item->satuan }}
@@ -325,7 +345,7 @@
                                                 <td>
                                                     {{ $item->department }}
                                                 </td>
-                                                
+
 
                                                 <td>
                                                     {{ $item->barang->kategori->nama }}
@@ -339,7 +359,8 @@
                                                     {!! $item->spesifikasi !!}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('keluar.edit', $item->id) }}" class="btn btn-primary">Detail</a>
+                                                    <a href="{{ route('keluar.edit', $item->id) }}"
+                                                        class="btn btn-primary">Detail</a>
                                                     {{-- <a href="{{ route('keluar.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                                                     <button onclick="deleteData({{ $item->id }}, 'keluar')"
                                                         class="btn btn-danger">Hapus</button> --}}
@@ -354,7 +375,7 @@
                 </div>
             </div>
 
-            
+
         </section>
     </div>
 

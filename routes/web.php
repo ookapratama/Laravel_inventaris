@@ -41,6 +41,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::get('/edit/{id}', 'BarangController@edit')->name('barang.edit');
             Route::put('/update', 'BarangController@update')->name('barang.update');
             Route::put('/status/{id}', 'BarangController@status')->name('barang.status');
+            Route::post('/export', 'BarangController@export')->name('barang.export.excel');
         });
 
         Route::prefix('masuk')->group(function () {
