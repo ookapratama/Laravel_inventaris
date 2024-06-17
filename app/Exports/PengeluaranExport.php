@@ -41,7 +41,7 @@ class PengeluaranExport implements FromCollection, WithHeadings, WithMapping, Wi
         return [
             $item->kode_keluar,
             $item->barang->nama,
-            strip_tags($item->spesifikasi), 
+            strip_tags(html_entity_decode($item->spesifikasi)), 
             strval($item->jumlah),
             $item->satuan,
             $item->department,

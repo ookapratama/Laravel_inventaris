@@ -42,13 +42,7 @@ class TransaksiController extends Controller
             'pengeluarans.jumlah as jumlah_keluar'
         )
         ->get();
-            // dd($data);
-        // $dataMasuk = Pemasukan::get();
-        // $dataKeluar = Pengeluaran::get();
-
-
-        // $data = $dataMasuk->merge($dataKeluar);
-        // $data = $data->sortByDesc('transaksi_tanggal');
+       
 
         // dd($data);
         return view('pages.transaksi.index', ['menu' => 'transaksi'], compact('data'));

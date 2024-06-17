@@ -84,7 +84,7 @@ class TransaksiExport implements FromCollection, WithHeadings, WithStyles, WithC
             $item->lokasi,
             $item->nama_pemasok ?? $item->nama_penerima,
             // strip_tags($item->spesifikasi_masuk ?? $item->spesifikasi_keluar), 
-            $data = strip_tags(html_entity_decode($item->spesifikasi_masuk ?? $item->spesifikasi_keluar))
+            strip_tags(html_entity_decode($item->spesifikasi_masuk ?? $item->spesifikasi_keluar))
 
         ];
     }

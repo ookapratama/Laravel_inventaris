@@ -29,7 +29,7 @@
                                 <div class="p-3">
                                     <button class="btn btn-success  p-2" type="submit"><i
                                             class="fas fa-sticky-note pr-1"></i>
-                                        Filter & Download Excel</button>
+                                        Download Excel</button>
                                 </div>
                             </form>
                             <div class="card-body">

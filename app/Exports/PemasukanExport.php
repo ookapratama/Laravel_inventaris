@@ -40,7 +40,7 @@ class PemasukanExport implements FromCollection, WithHeadings, WithMapping, With
         return [
             $item->kode_masuk,
             $item->barang->nama,
-            strip_tags($item->spesifikasi), 
+            strip_tags(html_entity_decode($item->spesifikasi)), 
             strval($item->jumlah),
             $item->satuan,
             $item->lokasi,

@@ -53,7 +53,7 @@ class BarangExport implements FromCollection, WithHeadings, WithMapping, WithSty
         return [
             $item->kode,
             $item->nama,
-            strip_tags($item->deskripsi), 
+            strip_tags(html_entity_decode($item->deskripsi)), 
             strval($item->stok),
             $item->satuan,
             $item->kategori->nama,
