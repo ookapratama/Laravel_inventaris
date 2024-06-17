@@ -38,26 +38,26 @@ class BarangExport implements FromCollection, WithHeadings, WithMapping, WithSty
     public function headings(): array
     {
         return [
+            'Tanggal Input Barang',
             'Kode Barang',
             'Nama Barang',
             'Deskripsi',
             'Stok',
             'Satuan',
             'Kategori',
-            'Tanggal Dibuat',
         ];
     }
 
     public function map($item): array
     {
         return [
+            $item->created_at->format('m-d-Y'), 
             $item->kode,
             $item->nama,
             strip_tags(html_entity_decode($item->deskripsi)), 
             strval($item->stok),
             $item->satuan,
             $item->kategori->nama,
-            $item->created_at->format('m-d-Y'), 
         ];
     }
 

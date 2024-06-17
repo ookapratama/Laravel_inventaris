@@ -23,6 +23,7 @@ class PemasukanExport implements FromCollection, WithHeadings, WithMapping, With
     public function headings(): array
     {
         return [
+            'Tanggal terima barang',
             'Kode Transaksi',
             'Nama Barang',
             'Deskripsi',
@@ -31,13 +32,13 @@ class PemasukanExport implements FromCollection, WithHeadings, WithMapping, With
             'Lokasi',
             'Nama Pemasok',
             'Kategori',
-            'Tanggal terima barang',
         ];
     }
 
     public function map($item): array
     {
         return [
+            $item->tgl_terima, 
             $item->kode_masuk,
             $item->barang->nama,
             strip_tags(html_entity_decode($item->spesifikasi)), 
@@ -46,7 +47,6 @@ class PemasukanExport implements FromCollection, WithHeadings, WithMapping, With
             $item->lokasi,
             $item->nama_pemasok,
             $item->barang->kategori->nama,
-            $item->tgl_terima 
         ];
     }
 

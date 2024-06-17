@@ -24,30 +24,32 @@ class PengeluaranExport implements FromCollection, WithHeadings, WithMapping, Wi
     public function headings(): array
     {
         return [
+            'Tanggal Keluar Barang',
             'Kode Transaksi',
             'Nama Barang',
             'Deskripsi',
             'Stok',
             'Satuan',
             'Department',
+            'Lokasi Barang',
             'Nama Penerima',
             'Kategori',
-            'Tanggal Keluar Barang',
         ];
     }
 
     public function map($item): array
     {
         return [
+            $item->tgl_keluar,
             $item->kode_keluar,
             $item->barang->nama,
             strip_tags(html_entity_decode($item->spesifikasi)), 
             strval($item->jumlah),
             $item->satuan,
             $item->department,
+            $item->lokasi,
             $item->nama_penerima,
             $item->barang->kategori->nama,
-            $item->tgl_keluar 
         ];
     }
 
@@ -72,6 +74,7 @@ class PengeluaranExport implements FromCollection, WithHeadings, WithMapping, Wi
             'G' => 15,
             'H' => 15,
             'I' => 20,
+            'J' => 20,
         ];
     }
 }

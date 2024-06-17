@@ -58,12 +58,12 @@ class TransaksiExport implements FromCollection, WithHeadings, WithStyles, WithC
     public function headings(): array
     {
         return [
+            'Tanggal Transaksi',
             'Jenis Transaksi',
             'Kode Transaksi',
             'Kode Barang',
             'Nama Barang',
             'Jumlah',
-            'Tanggal Transaksi',
             'Satuan',
             'Lokasi',
             'Nama Pemasok/Penerima',
@@ -74,12 +74,12 @@ class TransaksiExport implements FromCollection, WithHeadings, WithStyles, WithC
     public function map($item): array
     {
         return [
+            $item->tgl_masuk ?? $item->tgl_keluar,
             $item->jenis_transaksi,
             $item->kode_masuk ?? $item->kode_keluar,
             $item->kode_barang,
             $item->nama_barang,
             strval($item->jumlah),
-            $item->tgl_masuk ?? $item->tgl_keluar,
             $item->satuan,
             $item->lokasi,
             $item->nama_pemasok ?? $item->nama_penerima,
