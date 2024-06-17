@@ -31,7 +31,7 @@
                             <form action="{{ route('masuk.export.excel') }}" method="POST">
                                 @csrf
                                 <div class="p-3">
-                                    <button class="btn btn-success  p-2" type="submit"><i
+                                    <button class="btn btn-primary  p-2" type="submit"><i
                                             class="fas fa-sticky-note pr-1"></i>
                                         Download Excel</button>
                                 </div>

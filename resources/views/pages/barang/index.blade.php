@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                         <div class="">
-                                            <button class="btn btn-success  p-2" type="submit"><i class="fas fa-sticky-note pr-1"></i> Filter & Download
+                                            <button class="btn btn-primary  p-2" type="submit"><i class="fas fa-sticky-note pr-1"></i> Filter & Download
                                                 Excel</button>
                                         </div>
                                     </div>
@@ -59,6 +59,7 @@
                                                 <th class="text-center">
                                                     #
                                                 </th>
+                                                <th>Tanggl Input Barang</th>
                                                 <th>Kode Barang</th>
                                                 <th>Nama Barang</th>
                                                 <th>Spesifikasi</th>
@@ -75,6 +76,7 @@
                                                     <td>
                                                         {{ ++$i }}
                                                     </td>
+                                                    <td width="100">{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
                                                     <td>{{ $item->kode }}</td>
                                                     <td class="align-middle">
                                                         {{ $item->nama }}
