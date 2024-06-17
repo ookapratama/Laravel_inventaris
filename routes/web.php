@@ -42,8 +42,9 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::put('/update', 'BarangController@update')->name('barang.update');
             Route::put('/status/{id}', 'BarangController@status')->name('barang.status');
             Route::post('/export', 'BarangController@export')->name('barang.export.excel');
+            Route::get('/show/{kode}', 'BarangController@show')->name('barang.show');
         });
-
+        
         Route::prefix('masuk')->group(function () {
             Route::get('/', 'PemasukanController@index')->name('masuk.index');
             Route::post('/export', 'PemasukanController@export')->name('masuk.export.excel');
@@ -52,8 +53,9 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::get('/edit/{id}', 'PemasukanController@edit')->name('masuk.edit');
             Route::put('/update', 'PemasukanController@update')->name('masuk.update');
             Route::post('/hapus/{id}', 'PemasukanController@hapus')->name('masuk.hapus');
+            Route::get('/show/{kode}', 'PemasukanController@show')->name('masuk.show');
         });
-
+        
         Route::prefix('keluar')->group(function () {
             Route::get('/', 'PengeluaranController@index')->name('keluar.index');
             Route::post('/export', 'PengeluaranController@export')->name('keluar.export.excel');
@@ -62,6 +64,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::get('/edit/{id}', 'PengeluaranController@edit')->name('keluar.edit');
             Route::put('/update', 'PengeluaranController@update')->name('keluar.update');
             Route::post('/hapus/{id}', 'PengeluaranController@hapus')->name('keluar.hapus');
+            Route::get('/show/{kode}', 'PengeluaranController@show')->name('keluar.show');
         });
 
         Route::prefix('kategori')->group(function () {
@@ -85,7 +88,7 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
         Route::prefix('transaksi')->group(function () {
             Route::get('/', 'TransaksiController@index')->name('transaksi.index');
             Route::post('/export', 'TransaksiController@export')->name('transaksi.export.excel');
-            Route::get('/show/{id}', 'TransaksiController@show')->name('transaksi.show');
+            Route::get('/show/{kode}', 'TransaksiController@show')->name('transaksi.show');
         });
 
 

@@ -66,9 +66,12 @@ class BarangController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $kode)
     {
-        //
+        $data = Barang::where('kode', $kode)->first();
+        $view =  view('pages.barang.detail', compact('data'))->render();
+        // dd($view);
+        return response()->json(['html' => $view, 'status' => true]);
     }
 
     /**

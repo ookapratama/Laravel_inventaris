@@ -108,7 +108,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped" id="table-1">
+                                <table class="table table-striped" id="table-barang">
                                     <thead>
                                         <tr>
                                             <th class="text-center">
@@ -145,9 +145,12 @@
                                                     <div class="badge badge-info">{{ $item->satuan }}</div>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary"
-                                                        onclick="detailBarang({{ $item->id }})"
-                                                        id="detail-barang">Detail</a>
+                                                    <button data-toggle="custom-modal" data-id="{{ $item->id }}"
+                                                        data-table="barang" data-kode="{{ $item->kode }}"
+                                                        data-nama="{{ $item->nama }}" class="btn btn-primary">
+                                                        Detail
+                                                    </button>
+                                                </td>
                                                     {{-- <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-warning">Edit</a> --}}
                                                     {{-- @if ($item->status == 'tidak aktif')
                                                         <button onclick="setStatus({{ $item->id }}, 'barang', 'aktif')"
@@ -179,7 +182,7 @@
                         </form>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped" id="table-1">
+                                <table class="table table-striped" id="table-transaksi">
                                     <thead>
                                         <tr>
                                             <th class="text-center">#</th>
@@ -187,9 +190,10 @@
                                             <th>Kode Transaksi</th>
                                             <th>Kode Barang</th>
                                             <th>Jumlah</th>
-                                            <th>Entitas</th>
+                                            <th>Entitas (Pemasok/Penerima)</th>
                                             <th>Satuan</th>
                                             <th>Lokasi</th>
+                                            <th>department</th>
                                             <th>Kategori</th>
                                             <th>Spesifikasi</th>
                                             <th>Action</th>
@@ -197,29 +201,38 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($data['transaksi'] as $i => $item)
-                                            {{-- {{dd($item->nama_kategori)}} --}}
+                                            {{-- {{dump($item->lokasi_transaksi)}} --}}
                                             <tr>
                                                 <td>{{ $i + 1 }}</td>
-                                                <td>{{ $item->tgl_terima ?? $tgl_keluar }}</td>
-                                                <td>{{ $item->kode_masuk ?? $item->kode_keluar }}</td>
+                                                <td>{{ $item->tgl_transaksi }}</td>
+                                                <td>{{ $item->kode_transaksi }}</td>
                                                 <td>
                                                     {{ $item->kode }}<br>
                                                     <h6>{{ $item->nama }}</h6>
                                                 </td>
-                                                <td>{{ $item->jumlah_keluar ?? $item->jumlah_masuk }}</td>
+                                                <td>{{ $item->jumlah }}</td>
                                                 <td>
-                                                    <h6> {{ $item->nama_pemasok ?? $item->nama_penerima }} </h6>
+                                                    <h6>
+                                                        {{ $item->nama_entitas }}
+                                                    </h6>
                                                 </td>
-                                                <td>{{ $item->satuan }}</td>
-                                                <td>{{ $item->lokasi_masuk ?? '-' }}</td>
-                                                <td>{{ $item->nama_kategori }}</td>
-                                                <td>{!! $item->spesifikasi_masuk ?? $item->spesifikasi_keluar !!}</td>
                                                 <td>
-                                                    <a href="{{ route('transaksi.show', $item->id) }}"
-                                                        class="btn btn-primary">Detail</a>
+                                                    <div class="badge badge-info">{{ $item->satuan }}</div>
+                                                </td>
+                                                <td>{{ $item->lokasi_transaksi }}</td>
+                                                <td>{{ $item->department ?? 'Tidak Diketahui' }}</td>
+                                                <td>{{ $item->nama_kategori }}</td>
+                                                <td>{!! $item->spesifikasi !!}</td>
+                                                <td>
+                                                    <button data-toggle="custom-modal" data-id="{{ $item->id_barang }}"
+                                                        data-table="transaksi" data-kode="{{ $item->kode_transaksi }}"
+                                                        data-nama="{{ $item->nama }}" class="btn btn-primary">
+                                                        Detail
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        {{-- {{dd(true)}} --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -244,7 +257,7 @@
                         </form>
                         <div class="card-body pt-2 pb-2">
                             <div class="table-responsive">
-                                <table class="table table-striped" id="table-1">
+                                <table class="table table-striped" id="table-masuk">
                                     <thead>
                                         <tr>
                                             <th class="text-center">
@@ -299,8 +312,11 @@
                                                     {!! $item->spesifikasi !!}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('masuk.edit', $item->id) }}"
-                                                        class="btn btn-primary">Detail</a>
+                                                    <button data-toggle="custom-modal" data-id="{{ $item->id }}"
+                                                        data-table="masuk" data-kode="{{ $item->kode_masuk }}"
+                                                        data-nama="{{ $item->barang->nama }}" class="btn btn-primary">
+                                                        Detail
+                                                    </button>
                                                     {{-- <a href="{{ route('masuk.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                                                     <button onclick="deleteData({{ $item->id }}, 'masuk')"
                                                         class="btn btn-danger">Hapus</button> --}}
@@ -328,7 +344,7 @@
                         </form>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped" id="table-1">
+                                <table class="table table-striped" id="table-keluar">
                                     <thead>
                                         <tr>
                                             <th class="text-center">
@@ -384,8 +400,11 @@
                                                     {!! $item->spesifikasi !!}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('keluar.edit', $item->id) }}"
-                                                        class="btn btn-primary">Detail</a>
+                                                    <button data-toggle="custom-modal" data-id="{{ $item->id }}"
+                                                        data-table="keluar" data-kode="{{ $item->kode_keluar }}"
+                                                        data-nama="{{ $item->barang->nama }}" class="btn btn-primary">
+                                                        Detail
+                                                    </button>
                                                     {{-- <a href="{{ route('keluar.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                                                     <button onclick="deleteData({{ $item->id }}, 'keluar')"
                                                         class="btn btn-danger">Hapus</button> --}}
@@ -403,10 +422,10 @@
 
         </section>
     </div>
+    {{-- modal detail --}}
+    @include('components.modalAjax.modal')
 
     @push('scripts')
-        <script src="{{ asset('library/simpleweather/jquery.simpleWeather.min.js') }}"></script>
-        <script src="{{ asset('library/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
         <script src="{{ asset('library/datatables/media/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('library/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('library/datatables.net-select-bs4/js/select.bootstrap4.min.js') }}"></script>
@@ -416,5 +435,31 @@
 
         <!-- Page Specific JS File -->
         <script src="{{ asset('js/page/index-0.js') }}"></script>
+        <script>
+            $("#table-barang").dataTable({
+                "columnDefs": [{
+                    "sortable": false,
+                    "targets": [2, 3]
+                }]
+            });
+            $("#table-transaksi").dataTable({
+                "columnDefs": [{
+                    "sortable": false,
+                    "targets": [2, 3]
+                }]
+            });
+            $("#table-masuk").dataTable({
+                "columnDefs": [{
+                    "sortable": false,
+                    "targets": [2, 3]
+                }]
+            });
+            $("#table-keluar").dataTable({
+                "columnDefs": [{
+                    "sortable": false,
+                    "targets": [2, 3]
+                }]
+            });
+        </script>
     @endpush
 @endsection

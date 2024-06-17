@@ -31,7 +31,7 @@
                             <form action="{{ route('keluar.export.excel') }}" method="POST">
                                 @csrf
                                 <div class="p-3">
-                                    <button class="btn btn-success  p-2" type="submit"><i
+                                    <button class="btn btn-primary  p-2" type="submit"><i
                                             class="fas fa-sticky-note pr-1"></i>
                                         Download Excel</button>
                                 </div>
@@ -76,7 +76,7 @@
                                                         {{ $item->nama_penerima}}
                                                     </td>
                                                     <td width="50">
-                                                        {{ $item->satuan }}
+                                                        <div class="badge badge-info">{{ $item->satuan }}</div>
                                                     </td>
                                                     <td>
                                                         {{ $item->department }}
@@ -84,8 +84,6 @@
                                                     <td >
                                                         {{ $item->lokasi }}
                                                     </td>
-                                                    
-
                                                     <td>
                                                         {{ $item->barang->kategori->nama }}
                                                     </td>

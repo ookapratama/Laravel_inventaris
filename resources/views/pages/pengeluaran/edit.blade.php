@@ -77,10 +77,16 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Nama Penerima</label>
                                                     <input type="text" required value="{{ $data->nama_penerima }}" name="nama_penerima" id="nama_penerima1" class="form-control nama-penerima">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Lokasi Barang Keluar</label>
+                                                    <input type="text" required value="{{ $data->lokasi }}" name="lokasi" id="nama_penerima1" class="form-control nama-penerima">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

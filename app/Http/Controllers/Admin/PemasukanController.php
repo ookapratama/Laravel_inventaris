@@ -50,7 +50,8 @@ class PemasukanController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-
+        $barang = Barang::where(['kode' => $request->kode])->first();
+        if ($request->jumlah > $barang->stok) return redirect()->back()->with('message', 'stok error');
 
         $id = Pemasukan::max('id') + 1;
         $kodeMasuk = 'BRG-M-' . str_pad($id, 4, '0', STR_PAD_LEFT);
@@ -77,9 +78,12 @@ class PemasukanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $kode)
     {
-        //
+        $data = Pemasukan::where('kode_masuk', $kode)->first();
+        $view =  view('pages.pemasukan.detail', compact('data'))->render();
+        // dd($view);
+        return response()->json(['html' => $view, 'status' => true]);
     }
 
     /**

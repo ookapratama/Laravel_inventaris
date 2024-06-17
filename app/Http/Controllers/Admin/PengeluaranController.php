@@ -48,7 +48,7 @@ class PengeluaranController extends Controller
         // tambah barang peKeluaran
         $barangKeluar->kode_keluar = $kodeKeluar;
         $barangKeluar->kode = $request->kode;
-        // $barangKeluar->nama = $request->nama;
+        $barangKeluar->lokasi = $request->lokasi;
         // $barangKeluar->kategori = $request->kategori;
         $barangKeluar->jumlah = $request->jumlah;
         $barangKeluar->satuan = $request->satuan;
@@ -65,9 +65,12 @@ class PengeluaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $kode)
     {
-        //
+        $data = Pengeluaran::where('kode_keluar', $kode)->first();
+        $view =  view('pages.pengeluaran.detail', compact('data'))->render();
+        // dd($view);
+        return response()->json(['html' => $view, 'status' => true]);
     }
 
     /**

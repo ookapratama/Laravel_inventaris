@@ -4,6 +4,7 @@
     @push('styles')
         <link rel="stylesheet" href="{{ asset('library/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
         <link rel="stylesheet" href="{{ asset('library/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('library/prismjs/themes/prism.css') }}">
     @endpush
 
     <div class="main-content">
@@ -42,10 +43,10 @@
                                                 <th>Kode Transaksi</th>
                                                 <th>Kode Barang</th>
                                                 <th>Jumlah</th>
-                                                <th>Entitas</th>
+                                                <th>Entitas (Pemasok/Penerima)</th>
                                                 <th>Satuan</th>
                                                 <th>Lokasi</th>
-                                                <th>Department</th>
+                                                <th>department</th>
                                                 <th>Kategori</th>
                                                 <th>Spesifikasi</th>
                                                 <th>Action</th>
@@ -53,33 +54,37 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($data as $i => $item)
-                                                {{-- {{dd($item->nama_kategori)}} --}}
+                                                {{-- {{dump($item->lokasi_transaksi)}} --}}
                                                 <tr>
                                                     <td>{{ $i + 1 }}</td>
-                                                    <td>{{ $item->tgl_masuk ?? $item->tgl_keluar }}</td>
-                                                    <td>{{ $item->kode_masuk ?? $item->kode_keluar }}</td>
+                                                    <td>{{ $item->tgl_transaksi }}</td>
+                                                    <td>{{ $item->kode_transaksi }}</td>
                                                     <td>
-                                                        {{ $item->kode_barang }}<br>
-                                                        <h6>{{ $item->nama_barang }}</h6>
+                                                        {{ $item->kode }}<br>
+                                                        <h6>{{ $item->nama }}</h6>
                                                     </td>
                                                     <td>{{ $item->jumlah }}</td>
-                                                    {{-- <td>{{ $item->jumlah_masuk ?? $item->jumlah_keluar }}</td> --}}
                                                     <td>
-                                                        <h6> {{ $item->nama_pemasok }} </h6>
+                                                        <h6>
+                                                            {{ $item->nama_entitas }}
+                                                        </h6>
                                                     </td>
-                                                    <td>{{ $item->satuan }}</td>
-                                                    <td>{{ $item->lokasi_masuk ?? '-' }}</td>
-                                                    <td>{{ $item->department ?? '-' }}</td>
+                                                    <td>
+                                                        <div class="badge badge-info">{{ $item->satuan }}</div>
+                                                    </td>
+                                                    <td>{{ $item->lokasi_transaksi }}</td>
+                                                    <td>{{ $item->department ?? 'Tidak Diketahui' }}</td>
                                                     <td>{{ $item->nama_kategori }}</td>
+                                                    <td>{!! $item->spesifikasi !!}</td>
                                                     <td>
-                                                        {!! $item->spesifikasi_masuk ?? $item->spesifikasi_keluar !!}
-                                                    </td>
-                                                    <td>
-                                                        <a href="{{ route('transaksi.show', $item->id_barang) }}"
-                                                            class="btn btn-primary">Detail</a>
+                                                        <button data-toggle="custom-modal" data-id="{{ $item->id_barang }}" data-table="transaksi" data-kode="{{ $item->kode_transaksi }}" data-nama="{{ $item->nama }}"
+                                                            class="btn btn-primary">
+                                                            Detail
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             @endforeach
+                                            {{-- {{dd(true)}} --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -91,10 +96,24 @@
         </section>
     </div>
 
+    {{-- modal detail --}}
+    @include('components.modalAjax.modal')
+
+
+</div>
+    {{-- @include('components.modalAjax.modal') --}}
     @push('scripts')
         <script src="{{ asset('library/datatables/media/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('library/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('library/datatables.net-select-bs4/js/select.bootstrap4.min.js') }}"></script>
         <script src="{{ asset('js/page/modules-datatables.js') }}"></script>
+        <script src="{{ asset('library/prismjs/prism.js') }}"></script>
+        <script src="{{ asset('js/page/bootstrap-modal.js') }}"></script>
+        {{-- <script>
+            $("#modal-2").fireModal({
+                body: 'Modal body text goes here.',
+                center: true
+            });
+        </script> --}}
     @endpush
 @endsection

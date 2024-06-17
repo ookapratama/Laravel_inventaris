@@ -75,7 +75,7 @@
                                                         {{ $item->nama_pemasok }}
                                                     </td>
                                                     <td width="50">
-                                                        {{ $item->satuan }}
+                                                        <div class="badge badge-info">{{ $item->satuan }}</div>
                                                     </td>
                                                     
 

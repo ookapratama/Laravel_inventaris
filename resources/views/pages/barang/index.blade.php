@@ -65,7 +65,7 @@
                                                 <th>Stok</th>
                                                 <th>Kategori</th>
                                                 <th>Satuan</th>
-                                                <th>Status</th>
+                                                {{-- <th>Lokasi</th> --}}
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -88,11 +88,11 @@
                                                     <td>
                                                         <div class="badge badge-info">{{ $item->satuan }}</div>
                                                     </td>
-                                                    <td>
+                                                    {{-- <td>
                                                         <div
                                                             class="badge badge-{{ $item->status == 'aktif' ? 'success' : 'danger' }}">
                                                             {{ $item->status }}</div>
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         {{-- <a href="#" class="btn btn-primary" onclick="detailBarang({{$item->id}})" id="detail-barang">Detail</a> --}}
                                                         <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-warning">Edit</a>
