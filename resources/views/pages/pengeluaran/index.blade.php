@@ -51,6 +51,7 @@
                                                 <th>Nama Penerima</th>
                                                 <th>Satuan</th>
                                                 <th>Department</th>
+                                                <th>Lokasi</th>
                                                 <th>Kategori</th>
                                                 <th>Spesifikasi</th>
                                                 <th>Action</th>
@@ -68,7 +69,7 @@
                                                         {{ $item->kode }} <br>
                                                         <h6>{{ $item->barang->nama }}</h6> 
                                                     </td>
-                                                    <td>
+                                                    <td width="20">
                                                         {{ $item->jumlah }}
                                                     </td>
                                                     <td>
@@ -79,6 +80,9 @@
                                                     </td>
                                                     <td>
                                                         {{ $item->department }}
+                                                    </td>
+                                                    <td >
+                                                        {{ $item->lokasi }}
                                                     </td>
                                                     
 

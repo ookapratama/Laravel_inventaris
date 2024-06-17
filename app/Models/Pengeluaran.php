@@ -16,7 +16,7 @@ class Pengeluaran extends Model
         'satuan',
         'department',
         'nama_penerima',
-        'catatan',
+        'lokasi',
         'tgl_keluar',
     ];
 

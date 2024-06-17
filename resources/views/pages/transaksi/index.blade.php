@@ -45,6 +45,7 @@
                                                 <th>Entitas</th>
                                                 <th>Satuan</th>
                                                 <th>Lokasi</th>
+                                                <th>Department</th>
                                                 <th>Kategori</th>
                                                 <th>Spesifikasi</th>
                                                 <th>Action</th>
@@ -55,22 +56,26 @@
                                                 {{-- {{dd($item->nama_kategori)}} --}}
                                                 <tr>
                                                     <td>{{ $i + 1 }}</td>
-                                                    <td>{{ $item->tgl_terima ?? $tgl_keluar }}</td>
+                                                    <td>{{ $item->tgl_masuk ?? $item->tgl_keluar }}</td>
                                                     <td>{{ $item->kode_masuk ?? $item->kode_keluar }}</td>
                                                     <td>
-                                                        {{ $item->kode }}<br>
-                                                        <h6>{{ $item->nama }}</h6>
+                                                        {{ $item->kode_barang }}<br>
+                                                        <h6>{{ $item->nama_barang }}</h6>
                                                     </td>
-                                                    <td>{{ $item->jumlah_keluar ?? $item->jumlah_masuk }}</td>
+                                                    <td>{{ $item->jumlah }}</td>
+                                                    {{-- <td>{{ $item->jumlah_masuk ?? $item->jumlah_keluar }}</td> --}}
                                                     <td>
-                                                        <h6> {{ $item->nama_pemasok ?? $item->nama_penerima }} </h6>
+                                                        <h6> {{ $item->nama_pemasok }} </h6>
                                                     </td>
                                                     <td>{{ $item->satuan }}</td>
                                                     <td>{{ $item->lokasi_masuk ?? '-' }}</td>
+                                                    <td>{{ $item->department ?? '-' }}</td>
                                                     <td>{{ $item->nama_kategori }}</td>
-                                                    <td>{!! $item->spesifikasi_masuk ?? $item->spesifikasi_keluar !!}</td>
                                                     <td>
-                                                        <a href="{{ route('transaksi.show', $item->id) }}"
+                                                        {!! $item->spesifikasi_masuk ?? $item->spesifikasi_keluar !!}
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('transaksi.show', $item->id_barang) }}"
                                                             class="btn btn-primary">Detail</a>
                                                     </td>
                                                 </tr>

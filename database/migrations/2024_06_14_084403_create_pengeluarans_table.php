@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('satuan', ['pcs', 'dos']);
             $table->string('department');
             $table->string('nama_penerima');
-            $table->string('catatan')->nullable();
+            $table->string('lokasi')->nullable();
             $table->date('tgl_keluar');
             $table->timestamps();
         });
