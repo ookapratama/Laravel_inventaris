@@ -58,7 +58,7 @@
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label>Jumlah Barang Masuk</label>
-                                                    <input required type="text" name="jumlah" id="jumlah1" class="form-control jumlah-barang" value="{{ $data->jumlah }}">
+                                                    <input required type="number" name="jumlah" id="jumlah1" class="form-control jumlah-barang" value="{{ $data->jumlah }}">
                                                 </div>
                                             </div>
                                             <div class="col-md-2">

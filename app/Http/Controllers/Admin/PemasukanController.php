@@ -50,8 +50,8 @@ class PemasukanController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $barang = Barang::where(['kode' => $request->kode])->first();
-        if ($request->jumlah > $barang->stok) return redirect()->back()->with('message', 'stok error');
+        // $barang = Barang::where(['kode' => $request->kode])->first();
+        // if ($request->jumlah > $barang->stok) return redirect()->back()->with('message', 'stok error');
 
         $id = Pemasukan::max('id') + 1;
         $kodeMasuk = 'BRG-M-' . str_pad($id, 4, '0', STR_PAD_LEFT);
