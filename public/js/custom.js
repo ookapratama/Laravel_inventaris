@@ -80,7 +80,7 @@ const deleteData = (id, tabel) => {
                     "X-CSRF-TOKEN": token,
                 },
                 type: "POST",
-                url: `/public/dashboard/${tabel}/hapus/${id}`,
+                url: `/dashboard/${tabel}/hapus/${id}`,
                 success: function (response) {
                     console.log(response);
                     if (response) {
@@ -107,7 +107,7 @@ const getDetail = (id, tabel) => {
     console.log(id, tabel);
     let token = $("meta[name='csrf-token']").attr("content");
     $.ajax({
-        url: `/public/dashboard/${tabel}/show/${id}`,
+        url: `/dashboard/${tabel}/show/${id}`,
         type: "GET",
         datatype: "json",
         headers: {
@@ -153,7 +153,7 @@ $(document).on("click", '[data-toggle="custom-modal"]', function () {
     let token = $("meta[name='csrf-token']").attr("content");
 
     $.ajax({
-        url: `/public/dashboard/${tabel}/show/${kode}`,
+        url: `/dashboard/${tabel}/show/${kode}`,
         type: "GET",
         datatype: "json",
         headers: {

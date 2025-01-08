@@ -17,7 +17,7 @@ class PemasukanController extends Controller
      */
     public function index()
     {
-        $data = Pemasukan::get();
+        $data = Pemasukan::orderByDesc('id')->get();
         // foreach($data as $i => $item) {
         //     // dump($item->barang);
         //     foreach($item->barang as $b) {
@@ -39,8 +39,8 @@ class PemasukanController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::get();
-        $barang = Barang::get();
+        $kategori = Kategori::orderByDesc('id')->get();
+        $barang = Barang::orderByDesc('id')->get();
         return view('pages.pemasukan.create', ['menu' => 'pemasukan'], compact('kategori', 'barang'));
     }
 
@@ -92,8 +92,8 @@ class PemasukanController extends Controller
     public function edit(string $id)
     {
         $data = Pemasukan::find($id);
-        $kategori = Kategori::get();
-        $barang = Barang::get();
+        $kategori = Kategori::orderByDesc('id')->get();
+        $barang = Barang::orderByDesc('id')->get();
         return view('pages.pemasukan.edit', ['menu' => 'pemasukan'], compact('data', 'kategori', 'barang'));
     }
 

@@ -59,6 +59,9 @@
                                                 <option value="">-- Pilih Satuan -- </option>
                                                 <option {{ $data->satuan == 'pcs' ? 'selected' : '' }} value="pcs">pcs</option>
                                                 <option {{ $data->satuan == 'dos' ? 'selected' : '' }} value="dos">dos</option>
+                                                <option {{ $data->satuan == 'kg' ? 'selected' : '' }} value="kg">kg</option>
+                                                <option {{ $data->satuan == 'gr' ? 'selected' : '' }} value="gr">gr</option>
+                                                <option {{ $data->satuan == 'lbs' ? 'selected' : '' }} value="lbs">lbs</option>
                                             </select>
                                         </div>
                                         

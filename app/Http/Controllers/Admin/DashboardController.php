@@ -92,11 +92,11 @@ class DashboardController extends Controller
             // ->orWhereNotNull('pengeluarans.kode_keluar') // Filter hanya data pengeluaran yang ada
             ->get();
 
-            
-                        
+
+
         // dd($transaksi);
         $data  = array(
-            'barang'    => Barang::get(),
+            'barang'    => Barang::orderBy('id', 'desc')->get(),
             'transaksi' => $transaksi,
             'masuk'     => $dataMasuk,
             'keluar'    => $dataKeluar,

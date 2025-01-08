@@ -130,7 +130,7 @@
                                                 <td>
                                                     {{ ++$i }}
                                                 </td>
-                                                <td>{{ $item->created_at->format('m-d-Y') }}</td>
+                                                <td>{{  $item->created_at == null ? date('d-M-Y') : date('d-M-Y' , strtotime($item->created_at)) }}</td>
                                                 <td>{{ $item->kode }}</td>
                                                 <td class="align-middle">
                                                     {{ $item->nama }}
@@ -164,6 +164,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                
                             </div>
                         </div>
                     </div>

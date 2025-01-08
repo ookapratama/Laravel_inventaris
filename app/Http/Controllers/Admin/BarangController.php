@@ -37,7 +37,7 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $data = Barang::get();
+        $data = Barang::orderByDesc('id')->get();
 
         return view('pages.barang.index', ['menu' => 'barang'], compact('data'));
     }

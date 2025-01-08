@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->bigInteger('stok')->unsigned();
             $table->enum('status', ['aktif', 'tidak aktif']);
-            $table->enum('satuan', ['pcs', 'dos']);
+            $table->string('satuan');
             $table->string('kategori_id');
             $table->timestamps();
         });

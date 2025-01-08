@@ -57,6 +57,10 @@
                                                 <option value="">-- Pilih Satuan -- </option>
                                                 <option value="pcs">pcs</option>
                                                 <option value="dos">dos</option>
+                                                <option value="kg">kg</option>
+                                                <option value="gr">gr</option>
+                                                <option value="lbs">lbs</option>
+
                                             </select>
                                         </div>
                                         

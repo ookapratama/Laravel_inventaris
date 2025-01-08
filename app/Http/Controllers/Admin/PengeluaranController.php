@@ -17,7 +17,7 @@ class PengeluaranController extends Controller
      */
     public function index()
     {
-        $data = Pengeluaran::get();
+        $data = Pengeluaran::orderByDesc('id')->get();
         return view('pages.pengeluaran.index', ['menu' => 'keluar'], compact('data'));
     }
 
@@ -26,8 +26,8 @@ class PengeluaranController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::get();
-        $barang = Barang::get();
+        $kategori = Kategori::orderByDesc('id')->get();
+        $barang = Barang::orderByDesc('id')->get();
         return view('pages.pengeluaran.create', ['menu' => 'keluar'], compact('kategori', 'barang'));
     }
 
@@ -80,8 +80,8 @@ class PengeluaranController extends Controller
     {
         
         $data = Pengeluaran::find($id);
-        $kategori = Kategori::get();
-        $barang = Barang::get();
+        $kategori = Kategori::orderByDesc('id')->get();
+        $barang = Barang::orderByDesc('id')->get();
         return view('pages.pengeluaran.edit', ['menu' => 'keluar'], compact('data', 'kategori', 'barang'));
     }
 
