@@ -22,12 +22,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        
 
-                                        <div class="col-md-8">
+
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Nama Barang</label>
-                                                <input required  type="text" name="nama" class="form-control">
+                                                <input required type="text" name="nama" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -41,7 +41,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Tanggal</label>
+                                                <input required type="datetime" readonly name="created_at" class="form-control">
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="row">
                                         {{-- <div class="col-md-3">
@@ -50,7 +56,8 @@
                                             </div>
                                             
                                         </div> --}}
-                                        <input readonly required value="0" name="stok" type="hidden" class="form-control">
+                                        <input readonly required value="0" name="stok" type="hidden"
+                                            class="form-control">
                                         <div class="col-md-3">
                                             <label>Satuan Barang</label>
                                             <select name="satuan" id="" class="form-control">
@@ -63,7 +70,7 @@
 
                                             </select>
                                         </div>
-                                        
+
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 <label>Spesifikasi</label>
@@ -71,7 +78,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="card-footer text-right">
                                     <a class="btn btn-warning" href="{{ route('barang.index') }}">Kembali</a>

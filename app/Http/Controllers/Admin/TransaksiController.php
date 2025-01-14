@@ -65,8 +65,6 @@ class TransaksiController extends Controller
             // ->orWhereNotNull('pengeluarans.kode_keluar') // Filter hanya data pengeluaran yang ada
             ->get();
 
-
-
         // dd($data);
         return view('pages.transaksi.index', ['menu' => 'transaksi'], compact('data'));
     }
@@ -76,7 +74,6 @@ class TransaksiController extends Controller
      */
     public function show(string $kode)
     {
-        // dd($kode);
         $masuk = Pemasukan::where('kode_masuk', $kode)->first();
         if ($masuk) {
             $data = [

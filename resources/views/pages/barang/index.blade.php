@@ -76,7 +76,7 @@
                                                     <td>
                                                         {{ ++$i }}
                                                     </td>
-                                                    <td width="100">{{ date('d-m-Y', strtotime($item->created_at)) }}</td>
+                                                    <td width="100">{{ date('d-M-Y', strtotime($item->created_at)) }}</td>
                                                     <td>{{ $item->kode }}</td>
                                                     <td class="align-middle">
                                                         {{ $item->nama }}

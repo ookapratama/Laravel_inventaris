@@ -49,8 +49,8 @@
                                                 <label>Role</label>
                                                 <select name="role" id="" class="form-control">
                                                     <option value="">-- Pilih Role --</option>
-                                                    <option value="admin">Admin</option>
-                                                    <option value="superadmin">Super Admin</option>
+                                                    <option value="admin">User</option>
+                                                    <option value="superadmin">Admin</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -95,7 +95,7 @@
                                                     <td>{{ $item->username }}</td>
 
                                                     <td>
-                                                        {{ $item->role }}
+                                                        {{ $item->role == 'superadmin' ? 'Admin' : 'User' }}
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('user.edit', $item->id) }}"

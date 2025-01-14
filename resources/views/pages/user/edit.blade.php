@@ -61,8 +61,8 @@
                                                     <select required name="role" id="" class="form-control">
                                                         <option value="">-- Pilih Role --</option>
                                                             
-                                                        <option {{ $data->role == 'admin' ? 'selected' : '' }} value="admin">Admin</option>
-                                                        <option {{ $data->role == 'superadmin' ? 'selected' : '' }} value="superadmin">Super Admin</option>
+                                                        <option {{ $data->role == 'admin' ? 'selected' : '' }} value="admin">User</option>
+                                                        <option {{ $data->role == 'superadmin' ? 'selected' : '' }} value="superadmin">Admin</option>
 
                                                     </select>
                                                 </div>

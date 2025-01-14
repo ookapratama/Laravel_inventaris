@@ -25,8 +25,10 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <h4>Barang Keluar </h4>
-                                <a href="{{ route('keluar.create') }}" class="btn btn-success justi my-3 p-2">+ Tambah
-                                    Barang</a>
+                                @if (session('role') == 'superadmin')
+                                    <a href="{{ route('keluar.create') }}" class="btn btn-success justi my-3 p-2">+ Tambah
+                                        Barang</a>
+                                @endif
                             </div>
                             <form action="{{ route('keluar.export.excel') }}" method="POST">
                                 @csrf
@@ -67,13 +69,13 @@
                                                     <td>{{ $item->tgl_keluar }}</td>
                                                     <td width="100">
                                                         {{ $item->kode }} <br>
-                                                        <h6>{{ $item->barang->nama }}</h6> 
+                                                        <h6>{{ $item->barang->nama }}</h6>
                                                     </td>
                                                     <td width="20">
                                                         {{ $item->jumlah }}
                                                     </td>
                                                     <td>
-                                                        {{ $item->nama_penerima}}
+                                                        {{ $item->nama_penerima }}
                                                     </td>
                                                     <td width="50">
                                                         <div class="badge badge-info">{{ $item->satuan }}</div>
@@ -81,7 +83,7 @@
                                                     <td>
                                                         {{ $item->department }}
                                                     </td>
-                                                    <td >
+                                                    <td>
                                                         {{ $item->lokasi }}
                                                     </td>
                                                     <td>
@@ -96,9 +98,12 @@
                                                         {!! $item->spesifikasi !!}
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('keluar.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                                                        <button onclick="deleteData({{ $item->id }}, 'keluar')"
-                                                            class="btn btn-danger">Hapus</button>
+                                                        @if (session('role') == 'superadmin')
+                                                            <a href="{{ route('keluar.edit', $item->id) }}"
+                                                                class="btn btn-warning">Edit</a>
+                                                            <button onclick="deleteData({{ $item->id }}, 'keluar')"
+                                                                class="btn btn-danger">Hapus</button>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

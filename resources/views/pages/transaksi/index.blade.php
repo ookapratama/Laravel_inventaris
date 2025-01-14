@@ -77,8 +77,9 @@
                                                     <td>{{ $item->nama_kategori }}</td>
                                                     <td>{!! $item->spesifikasi !!}</td>
                                                     <td>
-                                                        <button data-toggle="custom-modal" data-id="{{ $item->id_barang }}" data-table="transaksi" data-kode="{{ $item->kode_transaksi }}" data-nama="{{ $item->nama }}"
-                                                            class="btn btn-primary">
+                                                        <button data-toggle="custom-modal" data-id="{{ $item->id_barang }}"
+                                                            data-table="transaksi" data-kode="{{ $item->kode_transaksi }}"
+                                                            data-nama="{{ $item->nama }}" class="btn btn-primary">
                                                             Detail
                                                         </button>
                                                     </td>
@@ -100,7 +101,7 @@
     @include('components.modalAjax.modal')
 
 
-</div>
+    </div>
     {{-- @include('components.modalAjax.modal') --}}
     @push('scripts')
         <script src="{{ asset('library/datatables/media/js/jquery.dataTables.min.js') }}"></script>

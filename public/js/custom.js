@@ -151,9 +151,11 @@ $(document).on("click", '[data-toggle="custom-modal"]', function () {
     //     center: true,
     // });
     let token = $("meta[name='csrf-token']").attr("content");
-
+    let url = "{{ route('transaksi.show', ['tabel' => ':tabel', 'kode' => ':kode']) }}"
+    url.replace(':tabel', tabel).replace(':kode', kode)
+    console.log(url);
     $.ajax({
-        url: `/dashboard/${tabel}/show/${kode}`,
+        url: `/public/dashboard/${tabel}/show/${kode}`,
         type: "GET",
         datatype: "json",
         headers: {

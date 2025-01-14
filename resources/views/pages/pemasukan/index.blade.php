@@ -25,8 +25,10 @@
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">
                                 <h4>Barang Masuk </h4>
-                                <a href="{{ route('masuk.create') }}" class="btn btn-success justi my-3 p-2">+ Tambah
-                                    Barang</a>
+                                @if (session('role') == 'superadmin')
+                                    <a href="{{ route('masuk.create') }}" class="btn btn-success justi my-3 p-2">+ Tambah
+                                        Barang</a>
+                                @endif
                             </div>
                             <form action="{{ route('masuk.export.excel') }}" method="POST">
                                 @csrf
@@ -62,9 +64,11 @@
                                                     <td>
                                                         {{ ++$i }}
                                                     </td>
-                                                    <td >{{ $item->kode_masuk }} </td>
+                                                    <td>{{ $item->kode_masuk }} </td>
                                                     <td>{{ $item->tgl_terima }}</td>
-                                                    <td width="100">{{ $item->kode }} <br> <h6>{{ $item->barang->nama }}</h6></td>
+                                                    <td width="100">{{ $item->kode }} <br>
+                                                        <h6>{{ $item->barang->nama }}</h6>
+                                                    </td>
                                                     <td width="50">
                                                         {{ $item->jumlah }}
                                                     </td>
@@ -77,7 +81,7 @@
                                                     <td width="50">
                                                         <div class="badge badge-info">{{ $item->satuan }}</div>
                                                     </td>
-                                                    
+
 
                                                     <td>
                                                         {{ $item->barang->kategori->nama }}
@@ -90,11 +94,16 @@
                                                     <td>
                                                         {!! $item->spesifikasi !!}
                                                     </td>
-                                                    <td>
-                                                        <a href="{{ route('masuk.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                                                        <button onclick="deleteData({{ $item->id }}, 'masuk')"
-                                                            class="btn btn-danger">Hapus</button>
-                                                    </td>
+                                                    @if (session('role') == 'superadmin')
+                                                        <td>
+                                                            <a href="{{ route('masuk.edit', $item->id) }}"
+                                                                class="btn btn-warning">Edit</a>
+                                                            <button onclick="deleteData({{ $item->id }}, 'masuk')"
+                                                                class="btn btn-danger">Hapus</button>
+                                                        </td>
+                                                    @else
+                                                        <td></td>
+                                                    @endif
                                                 </tr>
                                             @endforeach
                                         </tbody>
