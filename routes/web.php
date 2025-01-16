@@ -91,6 +91,11 @@ Route::group(['prefix' => '', 'namespace' => 'App\Http\Controllers\Admin', 'midd
             Route::get('/show/{kode}', 'TransaksiController@show')->name('transaksi.show');
         });
 
+        Route::prefix('profile')->group(function () {
+            Route::get('/{id}', 'ProfileController@index')->name('profile.index');
+            Route::put('/update', 'ProfileController@update')->name('profile.update');
+        });
+
 
 
         // Blank

@@ -122,6 +122,13 @@
         </script>
     @endif
 
+    {{--  update user --}}
+    @if (session('message') == 'update profile')
+        <script>
+            swal("Success", "User berhasil di update, silahkan login ulang untuk melihat perubahan", "success");
+        </script>
+    @endif
+
 </body>
 
 </html>
