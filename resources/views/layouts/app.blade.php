@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 
-    <title>{{ $title }} &mdash; E-Inventaris {{ session('message') }}</title>
+    <title>{{ $title }} &mdash; Smart Store {{ session('message') }}</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
